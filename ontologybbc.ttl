@@ -1,0 +1,43 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix cc: <http://creativecommons.org/ns#> .
+
+# @prefix : <#> .
+
+<>
+rdf:type owl:Ontology ;
+rdfs:label "Testing an vocabulary" ;
+dcterms:creator "Atila" ;
+dcterms:publisher "Atila" ;
+dcterms:date "2012-10-05" ;
+cc:license <http://creativecommons.org/licenses/by-sa/3.0/> .
+
+:Production
+      rdf:type rdfs:Class;
+      rdfs:label "Production";
+      rdfs:comment "the class of all productions".
+
+:Director
+      rdf:type rdfs:Class;
+      rdfs:label "Director";
+      rdfs:comment "the class of all directors";
+      rdfs:subClassOf foaf:Person.
+
+:director
+      rdf:type owl:ObjectProperty;
+      rdfs:label "director";
+      rdfs:comment "the director of the production";
+      rdfs:domain :Production;
+      rdfs:range :Director;
+      owl:inverseOf :directed.
+
+:directed
+      rdf:type owl:ObjectProperty;
+      rdfs:label "directed";
+      rdfs:comment "the production that has been directed";
+      rdfs:domain :Director;
+      rdfs:range :Production;
+      rdfs:subPropertyOf foaf:made.

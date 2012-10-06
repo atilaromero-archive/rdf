@@ -1,0 +1,38 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+
+<>
+rdf:type owl:Ontology ;
+rdfs:label "Testing an vocabulary" ;
+dcterms:creator "Atila" ;
+dcterms:publisher "Atila" ;
+dcterms:date "2012-10-05" ;
+cc:license <http://creativecommons.org/licenses/by-sa/3.0/> .
+
+:Path
+      rdf:type rdfs:Class;
+      rdfs:label "Path".
+
+:SubPath
+      rdf:type rdfs:Class;
+      rdfs:label "SubPath".
+
+:components
+      rdf:type owl:ObjectProperty;
+      rdfs:domain :Path.
+
+:pathSeparator
+      rdf:type owl:ObjectProperty;
+      rdfs:domain :Path.
+
+:mydir
+      rdf:type :Path;
+      :pathSeparator "/";
+      :components "C:/".
+      
+
+[ rdf:type :Path;
+  :components "C:/" ]
