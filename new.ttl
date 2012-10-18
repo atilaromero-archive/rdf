@@ -5,7 +5,7 @@
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 
 <>
-rdf:type owl:Ontology ;
+a owl:Ontology ;
 rdfs:label "Testing an vocabulary" ;
 dcterms:creator "Atila" ;
 dcterms:publisher "Atila" ;
@@ -13,26 +13,34 @@ dcterms:date "2012-10-05" ;
 cc:license <http://creativecommons.org/licenses/by-sa/3.0/> .
 
 :Path
-      rdf:type rdfs:Class;
+      a rdfs:Class;
       rdfs:label "Path".
 
 :SubPath
-      rdf:type rdfs:Class;
+      a rdfs:Class;
       rdfs:label "SubPath".
 
 :components
-      rdf:type owl:ObjectProperty;
+      a owl:ObjectProperty;
+      rdfs:domain :Path.
+
+:dir
+      a owl:ObjectProperty;
+      rdfs:domain :Path.
+
+:drive
+      a owl:ObjectProperty;
       rdfs:domain :Path.
 
 :pathSeparator
-      rdf:type owl:ObjectProperty;
+      a owl:ObjectProperty;
       rdfs:domain :Path.
 
 :mydir
-      rdf:type :Path;
+      a :Path;
       :pathSeparator "/";
-      :components "C:/".
+      :components ([:drive "C:"] [:dir "Windows"]).
       
 
-[ rdf:type :Path;
+[ a :Path;
   :components "C:/" ]
